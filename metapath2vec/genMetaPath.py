@@ -240,6 +240,7 @@ if __name__ == "__main__":
     numwalks = 20  #同一个起点开始的路径的数量
     walklength = 10  #路径长度
     mpg = MetaPathGenerator()
+    print('ss')
 
     # mpg.read_upudata(dirpath)
     # mpg.generate_random_upu(upuoutfilename, numwalks, walklength)
