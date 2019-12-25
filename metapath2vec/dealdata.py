@@ -92,6 +92,6 @@ def xieleibie(dirpath):
 
 # train_testdata()
 
-# upu = ".\\data\\upu\\vector"
-# xieleibie(upu)
-# quchong(upu)
+ucu = ".\\data\\ucu\\vector"
+xieleibie(ucu)
+quchong(ucu)
