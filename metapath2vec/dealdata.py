@@ -1,4 +1,4 @@
-
+import random
 def quchong(dirpath):
     a = 0
     readDir = dirpath + "\\node_type.txt"  # old
@@ -20,9 +20,9 @@ def quchong(dirpath):
 def train_testdata():
     delnum = 30#删除少于delnum 个签到的用户
     a = 0.8 #80%作为训练集
-    data = '.\\data\\100user\\checkin.txt'
-    train = '.\\data\\100user\\train.txt'
-    test = '.\\data\\100user\\test.txt'
+    data = '.\\data\\foursquare\\checkin.txt'
+    train = '.\\data\\foursquare\\train.txt'
+    test = '.\\data\\foursquare\\test.txt'
 
     #打开原文件
     f = open(data, 'r', encoding='UTF-8', errors='ignore')
@@ -54,7 +54,7 @@ def train_testdata():
 
     #写入train&test，并且每一项不为空
     for user in user_poilist:
-        num = int(a*len(user_poilist[user])) #训练集  每个用户的签到数量
+        num = round(a*len(user_poilist[user])) #训练集  每个用户的签到数量, 四舍五入
         l = user_poilist[user]
         for i in range(0,num):
             fa.write(str(l[i]))
@@ -92,6 +92,10 @@ def xieleibie(dirpath):
 
 # train_testdata()
 
-ucu = ".\\data\\ucu\\vector"
-xieleibie(ucu)
-quchong(ucu)
+# ucu = ".\\data\\ucu\\vector"
+# xieleibie(ucu)
+# quchong(ucu)
+
+utlc= ".\\data\\utlc\\vector"
+xieleibie(utlc)
+quchong(utlc)

@@ -20,8 +20,6 @@ import json
 import math
 # In[2]:
 
-
-
 #
 # def parse_mat_file(path):
 #

@@ -13,7 +13,6 @@ sys.path.append('./code')
 from skipgram import build_model,traning_op,train
 from dataset import Dataset
 
-
 def parse_args():
 	#Parses the arguments.
 	parser = argparse.ArgumentParser(description="metapath2vec")
@@ -28,7 +27,7 @@ def parse_args():
 	parser.add_argument('--embedding-dim',default=100,type=int,help='embedding dimensions')
 	parser.add_argument('--negative-samples',default=5,type=int,help='number of negative samples')
 	parser.add_argument('--care-type',default=1,type=int,help='care type or not. if 1, it cares (i.e. heterogeneous negative sampling). If 0, it does not care (i.e. normal negative sampling). ')
-	parser.add_argument('--window',default=5,type=int,help='context window size')
+	parser.add_argument('--window',default=1,type=int,help='context window size')
 
 	return parser.parse_args()
 

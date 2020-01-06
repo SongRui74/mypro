@@ -1,11 +1,8 @@
 import numpy as np
 import json
-import csv
-import heapq
-from collections import Counter
 
-dir = ".\\data\\utlptlu\\recommend"
-dirpath = ".\\data\\utlptlu\\vector"
+dir = ".\\data\\ucu\\recommend"
+dirpath = ".\\data\\ucu\\vector"
 
 index2nodeid = json.load(open(dir+"\\log\\index2nodeid.json"))
 index2nodeid = {int(k): v for k, v in index2nodeid.items()}
@@ -49,7 +46,7 @@ def poi_category():
                 if p not in poi_cate:
                     poi_cate[p] = id_cate[c]
 
-def data2csv():
+def poi2csv():
     readnodetype()  # 构造poilist
     #print(poilist)
     poi_category()  # 构造poi_cate字典
@@ -71,8 +68,25 @@ def data2csv():
         temp = temp + '\n'
         fvec.write(temp)
 
+#不写属性标题，用于向量可视化
+def user2csv():
+    readnodetype()  # 构造userlist
 
+    fvec = open(dir+'\\vec.txt', 'w')
+    findex = open(dir+'\\index.txt', 'w')
+    findex.write("user"+'\n')
+
+    for u in userlist:
+        vec = np.array(node_embeddings[nodeid2index[u]])
+        findex.write(u+'\n')
+
+        fvec.write(u + '\t')
+        temp = str(vec[0])
+        for i in range(1,len(vec)):
+            temp = temp + '\t' + str(vec[i])
+        temp = temp + '\n'
+        fvec.write(temp)
 
 if __name__ == "__main__":
 
-    data2csv()  # id向量类别信息写入csv文件 可以用weka进行聚类分类
+    user2csv()  # id向量类别信息写入csv文件 可以用weka进行聚类分类
