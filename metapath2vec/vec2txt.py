@@ -1,13 +1,13 @@
 import numpy as np
 import json
 #生成向量文件，向量可视化作用
-dir = ".\\data\\ucu\\recommend"
-dirpath = ".\\data\\ucu\\vector"
+dir = ".\\data\\utlc\\recommend"
+dirpath = ".\\data\\utlc\\vector"
 
-index2nodeid = json.load(open(dir+"\\log\\index2nodeid.json"))
+index2nodeid = json.load(open(dir+"\\log1\\index2nodeid.json"))
 index2nodeid = {int(k): v for k, v in index2nodeid.items()}
 nodeid2index = {v: int(k) for k, v in index2nodeid.items()}
-node_embeddings = np.load(dir+"\\log\\node_embeddings.npz")['arr_0']
+node_embeddings = np.load(dir+"\\log1\\node_embeddings.npz")['arr_0']
 # 100维的向量
 
 # 存放poi和user的id

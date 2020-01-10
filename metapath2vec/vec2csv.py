@@ -3,8 +3,8 @@ import json
 import csv
 #生成csv文件用于聚类
 # 路径要改！！！！！！！！！！！！！！！
-dir = ".\\data\\ucu\\recommend"
-dirpath = ".\\data\\ucu\\vector"
+dir = ".\\data\\utlc\\recommend"
+dirpath = ".\\data\\utlc\\vector"
 
 index2nodeid = json.load(open(dir +"\\log\\index2nodeid.json"))
 index2nodeid = {int(k): v for k, v in index2nodeid.items()}

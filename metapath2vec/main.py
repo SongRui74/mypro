@@ -27,7 +27,7 @@ def parse_args():
 	parser.add_argument('--embedding-dim',default=100,type=int,help='embedding dimensions')
 	parser.add_argument('--negative-samples',default=5,type=int,help='number of negative samples')
 	parser.add_argument('--care-type',default=1,type=int,help='care type or not. if 1, it cares (i.e. heterogeneous negative sampling). If 0, it does not care (i.e. normal negative sampling). ')
-	parser.add_argument('--window',default=1,type=int,help='context window size')
+	parser.add_argument('--window',default=5,type=int,help='context window size')
 
 	return parser.parse_args()
 
@@ -42,7 +42,7 @@ def main(args):
 		print("made the log directory",args.log)
 
 	dataset=Dataset(random_walk_txt=args.walks,node_type_mapping_txt=args.types,window_size=args.window)
-	center_node_placeholder,context_node_placeholder,negative_samples_placeholder,loss = build_model(BATCH_SIZE=1,VOCAB_SIZE=len(dataset.nodeid2index),EMBED_SIZE=args.embedding_dim,NUM_SAMPLED=args.negative_samples)
+	center_node_placeholder,context_node_placeholder,negative_samples_placeholder,loss = build_model(BATCH_SIZE=200,VOCAB_SIZE=len(dataset.nodeid2index),EMBED_SIZE=args.embedding_dim,NUM_SAMPLED=args.negative_samples)
 	optimizer = traning_op(loss,LEARNING_RATE=args.lr)
 	train(center_node_placeholder,context_node_placeholder,negative_samples_placeholder,loss,dataset,optimizer,NUM_EPOCHS=args.epochs,BATCH_SIZE=1,NUM_SAMPLED=args.negative_samples,care_type=args.care_type,LOG_DIRECTORY=args.log,LOG_INTERVAL=args.log_interval,MAX_KEEP_MODEL=args.max_keep_model)
 
